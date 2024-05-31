@@ -1,12 +1,14 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-import Header from './components/Header.jsx';
-import Shop from './components/Shop.jsx';
+import Header from "./components/Header.jsx";
+import Shop from "./components/Shop.jsx";
 
-import Product from './components/Product.jsx';
+import Product from "./components/Product.jsx";
 
-import { DUMMY_PRODUCTS } from './dummy-products.js';
-import { CartContext } from './components/store/shopping-cart-context.jsx';
+import { DUMMY_PRODUCTS } from "./dummy-products.js";
+
+//when we create a context value , and provode  this value to wrap the context around the multile componenets  , possibly around all components of your app , this context value can easly be connected to state. So we can connect React State to he context value which is provided to entire application. Now we can rid of all those props , so dont need to pass the state or the state updating functions through multiple components layers anymore. Instead, since that context value , which is linked to state is provided to all componenets in your applications
+import { CartContext } from "./components/store/shopping-cart-context.jsx";
 
 function App() {
   const [shoppingCart, setShoppingCart] = useState({
@@ -76,7 +78,7 @@ function App() {
         onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
       />
       <Shop>
-      {DUMMY_PRODUCTS.map((product) => (
+        {DUMMY_PRODUCTS.map((product) => (
           <li key={product.id}>
             <Product {...product} onAddToCart={handleAddItemToCart} />
           </li>
