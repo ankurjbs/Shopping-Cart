@@ -1,4 +1,9 @@
-export default function Cart({ items, onUpdateItemQuantity }) {
+// auppose we have to use context value here . so we have to import here. And to use this context ,React provides a special type hook name useContext.
+import { useContext } from "react";
+import { CartContext } from "./store/shopping-cart-context";
+
+export default function Cart({onUpdateItemQuantity }) {
+  const { items } = useContext(CartContext);
   const totalPrice = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
