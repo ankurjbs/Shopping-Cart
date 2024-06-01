@@ -71,10 +71,14 @@ function App() {
     });
   }
 
+  const cartCtx = {
+    items:shoppingCart.items,
+    addItemToCart:handleAddItemToCart
+  }
   // Provider is valid value provide by the React for the component 
   return (
     // The default value set when creating the context is only used if a component that was not wrapped by the Provider component tries to access the context value
-    <CartContext.Provider value = {{items:[]}}>
+    <CartContext.Provider value = {cartCtx}>
       <Header
         cart={shoppingCart}
         onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
