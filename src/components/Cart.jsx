@@ -2,13 +2,20 @@
 import { useContext } from "react";
 import { CartContext } from "./store/shopping-cart-context";
 
-export default function Cart({onUpdateItemQuantity }) {
+export default function Cart({ onUpdateItemQuantity }) {
   const { items } = useContext(CartContext);
   const totalPrice = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
   );
   const formattedTotalPrice = `$${totalPrice.toFixed(2)}`;
+
+  // Since context.provider provides a value (define in app.js CartContext.Provider). React also provide a another component in respect of context i.e. CartContext.Consumer. This componenet can be used to wrap the JSX Code that should have access to a context value with it (In follwing jsx code items define anobe using useContext). This Consumer component needs a special kind of child though between opening and closing tag of Context.Consumer
+  {
+    /* <CartContext.Consumer>{(cartCtx) => {
+    return <div id="cart"></div>
+  }}</CartContext.Consumer>; */
+  }
 
   return (
     <div id="cart">
