@@ -72,13 +72,14 @@ function App() {
   }
 
   const cartCtx = {
-    items:shoppingCart.items,
-    addItemToCart:handleAddItemToCart
-  }
-  // Provider is valid value provide by the React for the component 
+    items: shoppingCart.items,
+    addItemToCart: handleAddItemToCart,
+    updateItemQuantity: handleUpdateCartItemQuantity,
+  };
+  // Provider is valid value provide by the React for the component
   return (
     // The default value set when creating the context is only used if a component that was not wrapped by the Provider component tries to access the context value
-    <CartContext.Provider value = {cartCtx}>
+    <CartContext.Provider value={cartCtx}>
       <Header
         cart={shoppingCart}
         onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
@@ -86,7 +87,7 @@ function App() {
       <Shop>
         {DUMMY_PRODUCTS.map((product) => (
           <li key={product.id}>
-            <Product {...product} onAddToCart={handleAddItemToCart} />
+            <Product {...product} />
           </li>
         ))}
       </Shop>
